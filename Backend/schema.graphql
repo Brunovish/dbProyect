@@ -1,48 +1,17 @@
 type Query {
-	readTier(id: Int): [Tier]
-	readBrand(id: Int): [Brand]
-	readSocialNetwork(id: Int): [SocialNetwork]
-	readBrandSocial(id: Int): [BrandSocial]
+	readClient(id: Int): [Client]
+	
 }
 
 type Mutation {
-	createTier(input: TierInput!): Tier!
-	deleteTier(id: Int!): Tier!
-	updateTier(id: Int!, input: TierInput!): Tier!
 
-	createBrand(input: BrandInput!): Brand!
-	deleteBrand(id: Int!): Brand!
-	updateBrand(id: Int!, input: BrandInput!): Brand!
+	createClient(input: ClientInput!): Client!
+	deleteClient(id: Int!): Client!
+	updateClient(id: Int!, input: ClientInput!): Client!
 
-	createSocialNetwork(input: SocialNetworkInput!): SocialNetwork!
-	deleteSocialNetwork(id: Int!): SocialNetwork!
-	updateSocialNetwork(id: Int!, input: SocialNetworkInput!): SocialNetwork!
-
-	createBrandSocial(input: BrandSocialInput!): BrandSocial!
-	deleteBrandSocial(id: Int!): BrandSocial!
-	updateBrandSocial(id: Int!, input: BrandSocialInput!): BrandSocial!
 }
 
-type Tier {
-	id: ID
-	"""
-	The tier's name
-	@example "Basic"
-	"""
-	name: String
-	"""
-	The tier's price per month, in cents
-	@example "100"
-	"""
-	price: Int
-}
-
-input TierInput {
-	name: String
-	price: Int
-}
-
-type Brand {
+type Client {
 	id: ID
 	"""
 	The brand's name
@@ -53,7 +22,7 @@ type Brand {
 	The brand's login email
 	@example "microsoft@outlook.com"
 	"""
-	email: String
+	nickname: String
 	"""
 	The password's hash
 	@example "5e884898da2804"
@@ -65,75 +34,16 @@ type Brand {
 	"""
 	phone: String
 	"""
-	The brand's payment tier (fk)
-	"""
-	fkTier: Int
-	"""
-	The brand's payment tier (actual)
-	"""
-	tier: Tier
-	"""
 	Whether the brand has a due payment or not
 	@example false
 	"""
 	paymentDue: Boolean
 }
 
-input BrandInput {
+input ClientInput {
 	name: String
-	email: String
+	nickname: String
 	passwordHash: String
 	phone: String
-	fkTier: Int
 	paymentDue: Boolean
-}
-
-type SocialNetwork {
-	id: ID
-	"""
-	The social network's name
-	@example "Reddit"
-	"""
-	name: String
-}
-
-input SocialNetworkInput {
-	name: String
-}
-
-type BrandSocial {
-	id: ID
-	"""
-	The brand to which this account belongs (fk)
-	"""
-	fkBrand: Int
-	"""
-	The brand to which this account belongs (actual)
-	"""
-	brand: Brand
-	"""
-	The social network for this account (fk)
-	"""
-	fkSocialNetwork: Int
-	"""
-	The social network for this account (actual)
-	"""
-	socialNetwork: SocialNetwork
-	"""
-	The account's username
-	@example "microsoft"
-	"""
-	username: String
-	"""
-	The account's creation date
-	@example "2012-08-28"
-	"""
-	creationDate: String
-}
-
-input BrandSocialInput {
-	fkBrand: Int
-	fkSocialNetwork: Int
-	username: String
-	creationDate: String
 }

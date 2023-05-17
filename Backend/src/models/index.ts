@@ -1,11 +1,5 @@
-import Tier from "./tier"
-import Brand from "./brand"
-import SocialNetwork from "./socialNetwork"
-import BrandSocial from "./brandSocial"
+import Client from "./client"
 
 export default {
-	Tier,
-	Brand,
-	SocialNetwork,
-	BrandSocial
+	Client
 }

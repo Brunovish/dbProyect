@@ -1,41 +1,16 @@
-import { createBrand, deleteBrand, readBrand, updateBrand } from "./brand"
-import {
-	createBrandSocial,
-	deleteBrandSocial,
-	readBrandSocial,
-	updateBrandSocial
-} from "./brandSocial"
-import {
-	createSocialNetwork,
-	deleteSocialNetwork,
-	readSocialNetwork,
-	updateSocialNetwork
-} from "./socialNetwork"
-import { createTier, deleteTier, readTier, updateTier } from "./tier"
+import { createClient, deleteClient, readClient, updateClient } from "./client"
+
 
 export const resolvers = {
 	Query: {
-		readBrand,
-		readBrandSocial,
-		readSocialNetwork,
-		readTier
+		readClient,
+		
 	},
 
 	Mutation: {
-		createBrand,
-		deleteBrand,
-		updateBrand,
+		createClient,
+		deleteClient,
+		updateClient,
 
-		createBrandSocial,
-		deleteBrandSocial,
-		updateBrandSocial,
-
-		createSocialNetwork,
-		deleteSocialNetwork,
-		updateSocialNetwork,
-
-		createTier,
-		deleteTier,
-		updateTier
 	}
 }

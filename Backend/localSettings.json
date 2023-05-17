@@ -4,7 +4,7 @@
 		"port": 3306,
 		"user": "Bruno",
 		"password": "root",
-		"database": "marketing"
+		"database": "cliente"
 	},
 	"logger": {
 		"level": "debug"
