@@ -8,9 +8,10 @@ export const resolvers = {
 	},
 
 	Mutation: {
+
 		createClient,
 		deleteClient,
-		updateClient,
+		updateClient
 
 	}
 }

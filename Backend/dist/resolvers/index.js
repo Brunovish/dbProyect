@@ -9,7 +9,7 @@ exports.resolvers = {
     Mutation: {
         createClient: client_1.createClient,
         deleteClient: client_1.deleteClient,
-        updateClient: client_1.updateClient,
+        updateClient: client_1.updateClient
     }
 };
 //# sourceMappingURL=index.js.map

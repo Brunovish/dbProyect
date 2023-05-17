@@ -40,7 +40,7 @@ __decorate([
     __metadata("design:type", Boolean)
 ], Client.prototype, "paymentDue", void 0);
 Client = __decorate([
-    (0, sequelize_typescript_1.Table)({ tableName: "Client", timestamps: false })
+    (0, sequelize_typescript_1.Table)({ tableName: "client", timestamps: false })
 ], Client);
 exports.default = Client;
 //# sourceMappingURL=client.js.map

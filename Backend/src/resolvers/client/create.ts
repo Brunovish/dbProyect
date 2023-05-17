@@ -15,7 +15,7 @@ export const createClient = async (
 	{ db }: iContext,
 	info: any
 ) => {
-	const created: iClient = (await db.sequelize.models.client.create({
+	const created: iClient = (await db.sequelize.models.Client.create({
 		name: args.input.name,
 		nickname: args.input.nickname,
 		passwordHash: args.input.passwordHash,

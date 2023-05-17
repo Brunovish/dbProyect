@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createClient = void 0;
 const createClient = async (parent, args, { db }, info) => {
-    const created = (await db.sequelize.models.client.create({
+    const created = (await db.sequelize.models.Client.create({
         name: args.input.name,
         nickname: args.input.nickname,
         passwordHash: args.input.passwordHash,

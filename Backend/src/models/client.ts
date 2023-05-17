@@ -8,7 +8,7 @@ import {
 } from "sequelize-typescript"
 import { iClient } from "types"
 0
-@Table({ tableName:"Client", timestamps: false })
+@Table({ tableName:"client", timestamps: false })
 export default class Client extends Model<iClient> {
 	@AutoIncrement
 	@PrimaryKey
