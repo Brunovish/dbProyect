@@ -1,6 +1,8 @@
+
 type Query {
 	readClient(id: Int): [Client]
-	
+	readUser(id: Int): [User]
+	readRegion(id: Int): [Region]
 }
 
 type Mutation {
@@ -9,34 +11,26 @@ type Mutation {
 	deleteClient(id: Int!): Client!
 	updateClient(id: Int!, input: ClientInput!): Client!
 
+	createUser(input: UserInput!): User!
+	deleteUser(id: Int!): User!
+	updateUser(id: Int!, input: UserInput!): User!
+
+	createRegion(input:  RegionInput!):  Region!
+	deleteRegion(id: Int!):  Region!
+	updateRegion(id: Int!, input:  RegionInput!):  Region!
 }
 
 type Client {
 	id: ID
-	"""
-	The brand's name
-	@example "Microsoft"
-	"""
+	 
 	name: String
-	"""
-	The brand's login email
-	@example "microsoft@outlook.com"
-	"""
+	 
 	nickname: String
-	"""
-	The password's hash
-	@example "5e884898da2804"
-	"""
+	 
 	passwordHash: String
-	"""
-	The brand's phone number
-	@example "555896448"
-	"""
+	
 	phone: String
-	"""
-	Whether the brand has a due payment or not
-	@example false
-	"""
+	 
 	paymentDue: Boolean
 }
 
@@ -46,4 +40,39 @@ input ClientInput {
 	passwordHash: String
 	phone: String
 	paymentDue: Boolean
+}
+
+type User {
+	id: ID
+	 
+	fkClient: Int
+	 
+	Client: Client
+	
+	fkRegion: Int
+	
+	Region: Region
+	 
+	email: String
+
+	signUp: String
+}
+
+input UserInput {
+	fkClient: Int
+	Client: ClientInput
+	fkRegion: Int
+	Region: RegionInput
+	email: String
+	signUp: String
+}
+
+type  Region {
+	id: ID
+	 
+	name: String
+}
+
+input  RegionInput {
+	name: String
 }
