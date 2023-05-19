@@ -1,0 +1,126 @@
+
+type Query {
+	readClient(id: Int): [Client]
+	readUser(id: Int): [User]
+	readRegion(id: Int): [Region]
+	readClientRegion(id: Int): [ClientRegion]
+	readClientUser(id: Int): [ClientUser]
+}
+
+type Mutation {
+
+	createClient(input: ClientInput!): Client!
+	deleteClient(id: Int!): Client!
+	updateClient(id: Int!, input: ClientInput!): Client!
+
+	createUser(input: UserInput!): User!
+	deleteUser(id: Int!): User!
+	updateUser(id: Int!, input: UserInput!): User!
+
+	createRegion(input:  RegionInput!):  Region!
+	deleteRegion(id: Int!):  Region!
+	updateRegion(id: Int!, input:  RegionInput!):  Region!
+
+	createClientRegion(input:  ClientRegionInput!):  ClientRegion!
+	deleteClientRegion(id: Int!):  ClientRegion!
+	updateClientRegion(id: Int!, input:  ClientRegionInput!):  ClientRegion!
+	
+	createClientUser(input:  ClientUserInput!):  ClientUser!
+	deleteClientUser(id: Int!):  ClientUser!
+	updateClientUser(id: Int!, input:  ClientUserInput!):  ClientUser!
+}
+
+type Client {
+	id: ID
+	 
+	name: String
+	 
+	nickname: String
+	 
+	passwordHash: String
+	
+	phone: String
+	 
+	paymentDue: Boolean
+}
+
+input ClientInput {
+	name: String
+	nickname: String
+	passwordHash: String
+	phone: String
+	paymentDue: Boolean
+}
+
+type User {
+	id: ID
+	 
+	fkClient: Int
+	 
+	client: Client
+	
+	fkRegion: Int
+	
+	region: Region
+	 
+	email: String
+
+	signUp: String
+}
+
+input UserInput {
+	fkClient: Int
+	fkRegion: Int
+	email: String
+	signUp: String
+}
+
+type  Region {
+	id: ID
+	 
+	name: String
+}
+
+input  RegionInput {
+	name: String
+}
+
+type ClientRegion {
+	id: ID
+	 
+	fkClient: Int
+	 
+	client: Client
+	
+	fkRegion: Int
+	
+	region: Region
+	 
+	local: Boolean
+}
+
+input ClientRegionInput {
+	fkClient: Int
+	fkRegion: Int
+	local: Boolean
+}
+
+type ClientUser {
+	id: ID
+	 
+	fkClient: Int
+	 
+	client: Client
+	
+	fkUser: Int
+	
+	user: User
+	 
+	working: Boolean
+}
+
+input ClientUserInput {
+	fkClient: Int
+	fkUser: Int
+	working: Boolean
+}
