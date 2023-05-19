@@ -2,17 +2,17 @@ import { iContext } from "index"
 import { iFieldSelection } from "../../utils/getFields"
 import { getFields } from "../../utils/getFields"
 
-import { iUser} from "types"
+import { iClientRegion} from "types"
 import { readClient } from '../client/read';
 import { readRegion } from '../region/read';
 
-export const readUser = async (
+export const readClientRegion = async (
 	parent: any,
 	args: { id: number; nest: iFieldSelection },
 	{ db }: iContext,
 	info: any
-): Promise<iUser[]> => {
-	const fields = args.nest ? args.nest : getFields(info, "readUser")
+): Promise<iClientRegion[]> => {
+	const fields = args.nest ? args.nest : getFields(info, "readClientRegion")
 
 	const clientFields = fields.include.find((client) => client.name === "client")
 	const regionFields = fields.include.find((region) => region.name === "region")
@@ -21,7 +21,7 @@ export const readUser = async (
 	if (regionFields) fields.attributes.push("fkRegion")
 
 	const searchedId = args.id ? { id: args.id } : undefined
-	let found = (await db.sequelize.models.User.findAll({
+	let found = (await db.sequelize.models.ClientRegion.findAll({
 		where: searchedId,
 		attributes: fields.attributes
 	})) as any[]

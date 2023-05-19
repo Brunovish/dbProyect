@@ -1,21 +1,19 @@
 import { iContext } from "index"
-import { DateDataType } from "sequelize"
 
-export const updateUser = async (
+export const updateClientRegion = async (
 	parent: any,
 	args: {
 		id: number
 		input: {
 			fkClient?: number
 			fkRegion?: number
-			email?: string
-			signUp?: string
+			local?: boolean
 		}
 	},
 	{ db }: iContext,
 	info: any
 ) => {
-	const toUpdate = await db.sequelize.models.User.findByPk(args.id)
+	const toUpdate = await db.sequelize.models.ClientRegion.findByPk(args.id)
 
 	if (!toUpdate) {
 		throw new Error(`No entry with the id ${args.id} could be found`)

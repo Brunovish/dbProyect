@@ -17,6 +17,6 @@
 		"emitDecoratorMetadata": true,
 		"strictPropertyInitialization": false
 	},
-	"include": ["src/**/*.ts", "tests/**/*.ts"],
+	"include": ["src/**/*.ts", "tests/**/*.ts", "src/resolvers/clientregion"],
 	"exclude": ["./tests/", "./node_modules/", "./dist/"]
 }

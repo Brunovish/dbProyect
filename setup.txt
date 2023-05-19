@@ -1,0 +1,88 @@
+PROTOCOLO PARA INICIAR COSITO
+//NPM RUN START para activar el servidor
+
+//Despues en MYSQL corres el creador de base
+
+\\(opcional) corrres el llenador de base de datos 
+
+//Una vez creada la base en mysql usas Database\conect to database y pones
+
+localhost
+Bruno
+3306
+root
+
+
+\\creador de base de datos
+CREATE TABLE IF NOT EXISTS `cliente`.`client` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `nickname` VARCHAR(45) NOT NULL,
+  `passwordHash` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(45) NOT NULL,
+  `paymentDue` TINYINT NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE IF NOT EXISTS `cliente`.`region` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE IF NOT EXISTS `cliente`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `fkRegion` INT NOT NULL,
+  `fkClient` INT NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `signUp` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fkRegion_idx` (`fkRegion` ASC) VISIBLE,
+  CONSTRAINT `fkRegion`
+    FOREIGN KEY (`fkRegion`)
+    REFERENCES `cliente`.`region` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  INDEX `fkClient_idx` (`fkClient` ASC) VISIBLE,
+  CONSTRAINT `fkClient`
+    FOREIGN KEY (`fkClient`)
+    REFERENCES `cliente`.`client` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `cliente`.`clientRegion` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `fkRegion` INT NOT NULL,
+  `fkClient` INT NOT NULL,
+  `local` tinyint,
+  PRIMARY KEY (`id`),
+  INDEX `fkRegion_idx` (`fkRegion` ASC) VISIBLE,
+  INDEX `fkClient_idx` (`fkClient` ASC) VISIBLE,
+  CONSTRAINT `fkRegion2`
+    FOREIGN KEY (`fkRegion`)
+    REFERENCES `cliente`.`region` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  
+  CONSTRAINT `fkClient2`
+    FOREIGN KEY (`fkClient`)
+    REFERENCES `cliente`.`client` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+
+\\llenador de base de datos
+
+insert into client(id,name,nickname,passwordHash,phone,paymentDue) values (1,"bruno","odin","funciona","porfis",true);
+
+
+
+
+\\uso de mutaciones
+  "input": {
+      "name": "bruno",
+			"nickname": "odin",
+			"passwordHash": "si",
+			"phone": "a",
+			"paymentDue": true
+  },		
+}

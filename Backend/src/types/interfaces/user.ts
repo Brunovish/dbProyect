@@ -1,5 +1,5 @@
-import { iClient } from ".."
-import { iRegion } from ".."
+import { iClient } from "./client"
+import { iRegion } from "./region"
 
 export interface iUser {
 	id: number
@@ -7,11 +7,11 @@ export interface iUser {
 	 * The User's phone number
 	 * @example "555896448"
 	 * */
-	Region: iRegion
+	region: iRegion
 	/**
 	 * The User's payment tier (tier table relation)
 	 */
-	Client: iClient
+	client: iClient
 	/**
 	 * The User's login email
 	 * @example "microsoft@outlook.com"
